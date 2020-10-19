@@ -3,6 +3,7 @@ import "./App.css";
 
 function App() {
   const [backendData, setBackendData] = useState("");
+  const [message, setMessage] = useState("");
 
   async function sendRequest(e) {
     e.preventDefault();
@@ -12,6 +13,7 @@ function App() {
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify(message),
       });
       const data = await response.json();
       console.log(data);
@@ -21,11 +23,17 @@ function App() {
       console.log("error", error);
     }
   }
+  console.log(message);
 
   return (
     <div className="App">
       <form>
-        <input type="text"></input>
+        <input
+          onChange={(e) => {
+            setMessage(e.target.value);
+          }}
+          type="text"
+        ></input>
         <button onClick={sendRequest}>Submit</button>
       </form>
       <p>I got back, {backendData}</p>
