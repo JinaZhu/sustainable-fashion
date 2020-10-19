@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
 
+const DEBUG = 0;
+
+const PREFIX = DEBUG ? "http://localhost:80" : "";
+
+const api_call = PREFIX + "/hello";
+
 function App() {
   const [backendData, setBackendData] = useState("");
   const [message, setMessage] = useState("");
@@ -8,7 +14,7 @@ function App() {
   async function sendRequest(e) {
     e.preventDefault();
     try {
-      const response = await fetch("/hello", {
+      const response = await fetch(api_call, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

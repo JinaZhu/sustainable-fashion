@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
+from flask_cors import CORS
 
 
 # from flask_sqlalchemy import flask_sqlalchemy
@@ -10,6 +11,7 @@ app = Flask(__name__, static_folder='./build', static_url_path='/')
 # three slashes is a relative path, four is absolute
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
+CORS(app)
 
 
 class Survey(db.Model):
