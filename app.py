@@ -31,14 +31,13 @@ def home():
 @app.route('/hello', methods=['POST'])
 def index():
     message = request.get_json()
-
-    print('***********', message)
     new_message = Messages(content=message)
 
     try:
         db.session.add(new_message)
         db.session.commit()
-        return jsonify("success")
+        first_message = Messages.query.filter_by(id=1).first()
+        return jsonify(first_message.content)
     except:
         return jsonify("there was an issue adding a message")
 

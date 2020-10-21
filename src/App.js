@@ -29,7 +29,6 @@ function App() {
       console.log("error", error);
     }
   }
-  console.log(message);
 
   return (
     <div className="App">
