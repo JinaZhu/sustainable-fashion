@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
-const DEBUG = 1;
+const DEBUG = process.env.NODE_ENV === "development" ? true : false;
 
 const PREFIX = DEBUG ? "http://localhost:80" : "";
 
