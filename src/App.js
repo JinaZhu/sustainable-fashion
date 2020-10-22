@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
-const DEBUG = 0;
+const DEBUG = 1;
 
 const PREFIX = DEBUG ? "http://localhost:80" : "";
 
@@ -29,7 +29,6 @@ function App() {
       console.log("error", error);
     }
   }
-  console.log(message);
 
   return (
     <div className="App">
