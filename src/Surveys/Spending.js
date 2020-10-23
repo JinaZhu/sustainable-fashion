@@ -9,9 +9,30 @@ const spendingOptions = [
   "$1000+",
 ];
 
+const DEBUG = process.env.NODE_ENV === "development" ? true : false;
+const PREFIX = DEBUG ? "http://localhost:80" : "";
+const api_call = PREFIX + "/spending";
+
 const Spending = () => {
   const [SpendingAmount, setSpendingType] = useState("");
   console.log(SpendingAmount);
+
+  async function sendSpendingAmount(e, SpendingAmount) {
+    e.preventDefault();
+    try {
+      const response = await fetch(api_call, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(SpendingAmount),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
 
   return (
     <SpendingContainer>
@@ -25,6 +46,9 @@ const Spending = () => {
           </SpendingOption>
         );
       })}
+      <button onClick={(e) => sendSpendingAmount(e, SpendingAmount)}>
+        Submit
+      </button>
     </SpendingContainer>
   );
 };
