@@ -40,3 +40,20 @@ export const SpendingOption = styled.div`
     color: #0f4c81;
   }
 `;
+
+export const SubmitButton = styled.button`
+  background-color: white;
+  color: #0f4c81;
+  padding: 5px;
+  margin: 5px;
+  font-family: "Montserrat", sans-serif;
+  border: 1px solid white;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+    background-color: #0f4c81;
+    border: 1px solid white;
+  }
+`;

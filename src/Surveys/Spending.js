@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { SpendingOption, SpendingContainer, Question, Options } from "./styled";
+import {
+  SpendingOption,
+  SpendingContainer,
+  Question,
+  Options,
+  SubmitButton,
+} from "./styled";
 
 const spendingOptions = [
   "$0-$49",
@@ -46,9 +52,9 @@ const Spending = () => {
           </SpendingOption>
         );
       })}
-      <button onClick={(e) => sendSpendingAmount(e, SpendingAmount)}>
+      <SubmitButton onClick={(e) => sendSpendingAmount(e, SpendingAmount)}>
         Submit
-      </button>
+      </SubmitButton>
     </SpendingContainer>
   );
 };
