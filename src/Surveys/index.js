@@ -1,10 +1,12 @@
 import React from "react";
+import { SurveysContainer } from "./styled";
+import Spending from "./Spending";
 
 const Survey = () => {
   return (
-    <div>
-      <p>Hi there</p>
-    </div>
+    <SurveysContainer>
+      <Spending />
+    </SurveysContainer>
   );
 };
 
