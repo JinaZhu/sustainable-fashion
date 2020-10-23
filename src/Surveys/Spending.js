@@ -5,7 +5,9 @@ import {
   Question,
   Options,
   SubmitButton,
+  ButtonContainer,
 } from "./styled";
+import { DEBUG, PREFIX } from "../utils";
 
 const spendingOptions = [
   "$0-$49",
@@ -15,28 +17,33 @@ const spendingOptions = [
   "$1000+",
 ];
 
-const DEBUG = process.env.NODE_ENV === "development" ? true : false;
-const PREFIX = DEBUG ? "http://localhost:80" : "";
-const api_call = PREFIX + "/spending";
+const api_path = PREFIX + "/spending";
 
 const Spending = () => {
-  const [SpendingAmount, setSpendingType] = useState("");
-  console.log(SpendingAmount);
+  const [spendingAmount, setSpendingType] = useState("");
 
-  async function sendSpendingAmount(e, SpendingAmount) {
+  async function sendSpendingAmount(e, spendingAmount) {
     e.preventDefault();
     try {
-      const response = await fetch(api_call, {
+      const response = await fetch(api_path, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(SpendingAmount),
+        body: JSON.stringify(spendingAmount),
       });
       const data = await response.json();
       console.log(data);
     } catch (error) {
       console.log("error", error);
+    }
+  }
+
+  function checkActive(selectedAmount) {
+    if (spendingAmount === selectedAmount) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -47,14 +54,20 @@ const Spending = () => {
       </Question>
       {spendingOptions.map((option) => {
         return (
-          <SpendingOption key={option} onClick={() => setSpendingType(option)}>
+          <SpendingOption
+            key={option}
+            onClick={() => setSpendingType(option)}
+            isActive={checkActive(option)}
+          >
             <Options>{option}</Options>
           </SpendingOption>
         );
       })}
-      <SubmitButton onClick={(e) => sendSpendingAmount(e, SpendingAmount)}>
-        Submit
-      </SubmitButton>
+      <ButtonContainer>
+        <SubmitButton onClick={(e) => sendSpendingAmount(e, spendingAmount)}>
+          Submit
+        </SubmitButton>
+      </ButtonContainer>
     </SpendingContainer>
   );
 };

@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const SurveysContainer = styled.div`
+export const SurveysPage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,10 +8,16 @@ export const SurveysContainer = styled.div`
   background-color: #0f4c81;
 `;
 
+export const SurveyContainer = styled.div`
+  border-top: 1px solid white;
+  margin-top: 10%;
+`;
+
 export const Question = styled.p`
   font-family: "Gravitas One", cursive;
   font-size: 25px;
   color: white;
+  text-align: left;
 `;
 
 export const SpendingContainer = styled.div`
@@ -19,8 +25,7 @@ export const SpendingContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border-left: 1px solid white;
-  border-right: 1px solid white;
+  border-bottom: 1px solid white;
   width: 500px;
   padding: 5px;
 `;
@@ -34,26 +39,45 @@ export const SpendingOption = styled.div`
   width: 10rem;
   margin: 5px;
   color: white;
+  cursor: pointer;
 
   &:hover {
-    background-color: white;
+    background: #f2f2f2;
     color: #0f4c81;
+    box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
   }
+  ${(props) => {
+    return (
+      props.isActive &&
+      css`
+        background: #f2f2f2;
+        color: #0f4c81;
+        box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
+      `
+    );
+  }}
 `;
 
 export const SubmitButton = styled.button`
-  background-color: white;
+  background-color: f2f2f2;
   color: #0f4c81;
-  padding: 5px;
+  padding: 10px;
   margin: 5px;
   font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  width: 25%;
   border: 1px solid white;
   outline: none;
   cursor: pointer;
 
   &:hover {
-    color: white;
-    background-color: #0f4c81;
     border: 1px solid white;
+    box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
 `;
