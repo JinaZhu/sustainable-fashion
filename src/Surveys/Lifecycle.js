@@ -8,6 +8,9 @@ import {
   CounterNum,
   SubmitButton,
 } from "./styled";
+import { DEBUG, PREFIX } from "../utils";
+
+const api_path = PREFIX + "/lifecycle";
 
 const Lifecycle = () => {
   const [counter, setCounter] = useState(0);
@@ -21,6 +24,24 @@ const Lifecycle = () => {
     }
     setCounter(currentCounter);
   }
+
+  async function addLifecycleVote(e, year) {
+    e.preventDefault();
+    try {
+      const response = await fetch(api_path, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(counter),
+      });
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
   return (
     <LifecycleContainer>
       <Question>What is the average lifecycle of a piece of clothing?</Question>
@@ -30,7 +51,13 @@ const Lifecycle = () => {
         <YearTracker onClick={(e) => renderCounter(-1)}>▼</YearTracker>
       </CounterContainer>
       <ButtonContainer>
-        <SubmitButton>Submit</SubmitButton>
+        <SubmitButton
+          onClick={(e) => {
+            addLifecycleVote(e, counter);
+          }}
+        >
+          Submit
+        </SubmitButton>
       </ButtonContainer>
     </LifecycleContainer>
   );
