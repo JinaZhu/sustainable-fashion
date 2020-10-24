@@ -3,7 +3,6 @@ import {
   SpendingOption,
   SpendingContainer,
   Question,
-  Options,
   SubmitButton,
   ButtonContainer,
 } from "./styled";
@@ -59,7 +58,7 @@ const Spending = () => {
             onClick={() => setSpendingType(option)}
             isActive={checkActive(option)}
           >
-            <Options>{option}</Options>
+            <p>{option}</p>
           </SpendingOption>
         );
       })}
