@@ -8,8 +8,6 @@ import {
   CounterNum,
   SubmitButton,
 } from "./styled";
-import up from "../images/up.svg";
-import down from "../images/down.svg";
 
 const Lifecycle = () => {
   const [counter, setCounter] = useState(0);
@@ -27,13 +25,9 @@ const Lifecycle = () => {
     <LifecycleContainer>
       <Question>What is the average lifecycle of a piece of clothing?</Question>
       <CounterContainer>
-        <YearTracker onClick={(e) => renderCounter(1)}>
-          ▲{/* <img src={up} alt="up arrow" width="15" /> */}
-        </YearTracker>
+        <YearTracker onClick={(e) => renderCounter(1)}>▲</YearTracker>
         <CounterNum>{counter}</CounterNum>
-        <YearTracker onClick={(e) => renderCounter(-1)}>
-          ▼{/* <img src={down} alt="up arrow" width="15" /> */}
-        </YearTracker>
+        <YearTracker onClick={(e) => renderCounter(-1)}>▼</YearTracker>
       </CounterContainer>
       <ButtonContainer>
         <SubmitButton>Submit</SubmitButton>

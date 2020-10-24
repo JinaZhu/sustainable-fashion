@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
-from model import db, connect_to_db, Messages, Spending
+from model import db, connect_to_db, Messages, Spending, Lifecycle
 from flask_cors import CORS
 
 
@@ -51,13 +51,33 @@ def spending():
         if exist == None:
             new_spending_amount = Spending(
                 spendingAmount=spending_amount, votes=1)
-            print('hello')
             db.session.add(new_spending_amount)
             db.session.commit()
         else:
             spending = Spending.query.filter_by(
                 spendingAmount=spending_amount).first()
             spending.votes += 1
+            db.session.commit()
+        return jsonify('yayyy')
+    except:
+        return jsonify("Something went wrong, could not add to db")
+
+
+@app.route('/lifecycle', methods=['POST'])
+def lifecycle():
+    lifecycle_year = request.get_json()
+    exist = Lifecycle.query.filter_by(Lifecycle_year=Lifecycle_year).scalar()
+
+    try:
+        if exist == None:
+            new_lifecycle_year = Lifecycle(
+                Lifecycle_year=Lifecycle_year, votes=1)
+            db.session.add(new_lifecycle_year)
+            db.session.commit()
+        else:
+            lifecycle_year = Lifecycle.query.filter_by(
+                Lifecycle_year=Lifecycle_year).first()
+            lifecycle_year.votes += 1
             db.session.commit()
         return jsonify('yayyy')
     except:

@@ -13,7 +13,6 @@ export const SurveysPage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   background-color: #0f4c81;
 `;
 
@@ -33,6 +32,8 @@ export const Question = styled.p`
 export const SpendingContainer = styled.div`
   ${FlexDisplay}
   border-bottom: 1px solid white;
+  width: 400px;
+  padding: 20px;
 `;
 
 export const SpendingOption = styled.div`
@@ -89,6 +90,8 @@ export const LifecycleContainer = styled.div`
   border-bottom: 1px solid white;
   margin-left: 10px;
   justify-content: space-between;
+  width: 400px;
+  padding: 20px;
 `;
 
 export const NumberSelector = styled.input`
