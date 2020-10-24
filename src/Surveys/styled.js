@@ -88,6 +88,7 @@ export const LifecycleContainer = styled.div`
   border-left: 1px solid white;
   border-bottom: 1px solid white;
   margin-left: 10px;
+  justify-content: space-between;
 `;
 
 export const NumberSelector = styled.input`

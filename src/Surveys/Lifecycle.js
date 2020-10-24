@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import {
   LifecycleContainer,
   Question,
-  NumberSelector,
+  ButtonContainer,
   YearTracker,
   CounterContainer,
   CounterNum,
+  SubmitButton,
 } from "./styled";
 import up from "../images/up.svg";
 import down from "../images/down.svg";
@@ -34,7 +35,9 @@ const Lifecycle = () => {
           ▼{/* <img src={down} alt="up arrow" width="15" /> */}
         </YearTracker>
       </CounterContainer>
-      <button>Submit</button>
+      <ButtonContainer>
+        <SubmitButton>Submit</SubmitButton>
+      </ButtonContainer>
     </LifecycleContainer>
   );
 };
