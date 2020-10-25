@@ -7,6 +7,7 @@ import {
   CounterContainer,
   CounterNum,
   SubmitButton,
+  ContainerPaddings,
 } from "./styled";
 import { DEBUG, PREFIX } from "../utils";
 
@@ -43,23 +44,27 @@ const Lifecycle = () => {
   }
 
   return (
-    <LifecycleContainer>
-      <Question>What is the average lifecycle of a piece of clothing?</Question>
-      <CounterContainer>
-        <YearTracker onClick={(e) => renderCounter(1)}>▲</YearTracker>
-        <CounterNum>{counter}</CounterNum>
-        <YearTracker onClick={(e) => renderCounter(-1)}>▼</YearTracker>
-      </CounterContainer>
-      <ButtonContainer>
-        <SubmitButton
-          onClick={(e) => {
-            addLifecycleVote(e, counter);
-          }}
-        >
-          Submit
-        </SubmitButton>
-      </ButtonContainer>
-    </LifecycleContainer>
+    <ContainerPaddings border="left">
+      <LifecycleContainer>
+        <Question>
+          What is the average lifecycle of a piece of clothing?
+        </Question>
+        <CounterContainer>
+          <YearTracker onClick={(e) => renderCounter(1)}>▲</YearTracker>
+          <CounterNum>{counter}</CounterNum>
+          <YearTracker onClick={(e) => renderCounter(-1)}>▼</YearTracker>
+        </CounterContainer>
+        <ButtonContainer>
+          <SubmitButton
+            onClick={(e) => {
+              addLifecycleVote(e, counter);
+            }}
+          >
+            Submit
+          </SubmitButton>
+        </ButtonContainer>
+      </LifecycleContainer>
+    </ContainerPaddings>
   );
 };
 

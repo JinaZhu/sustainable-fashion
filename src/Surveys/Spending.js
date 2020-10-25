@@ -5,6 +5,7 @@ import {
   Question,
   SubmitButton,
   ButtonContainer,
+  ContainerPaddings,
 } from "./styled";
 import { DEBUG, PREFIX } from "../utils";
 
@@ -47,27 +48,29 @@ const Spending = () => {
   }
 
   return (
-    <SpendingContainer>
-      <Question>
-        On average, how much do you spend on clothes each year?
-      </Question>
-      {spendingOptions.map((option) => {
-        return (
-          <SpendingOption
-            key={option}
-            onClick={() => setSpendingType(option)}
-            isActive={checkActive(option)}
-          >
-            <p>{option}</p>
-          </SpendingOption>
-        );
-      })}
-      <ButtonContainer>
-        <SubmitButton onClick={(e) => sendSpendingAmount(e, spendingAmount)}>
-          Submit
-        </SubmitButton>
-      </ButtonContainer>
-    </SpendingContainer>
+    <ContainerPaddings>
+      <SpendingContainer>
+        <Question>
+          On average, how much do you spend on clothes each year?
+        </Question>
+        {spendingOptions.map((option) => {
+          return (
+            <SpendingOption
+              key={option}
+              onClick={() => setSpendingType(option)}
+              isActive={checkActive(option)}
+            >
+              <p>{option}</p>
+            </SpendingOption>
+          );
+        })}
+        <ButtonContainer>
+          <SubmitButton onClick={(e) => sendSpendingAmount(e, spendingAmount)}>
+            Submit
+          </SubmitButton>
+        </ButtonContainer>
+      </SpendingContainer>
+    </ContainerPaddings>
   );
 };
 

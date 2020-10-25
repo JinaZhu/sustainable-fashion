@@ -3,10 +3,12 @@ import styled, { css } from "styled-components";
 const FlexDisplay = css`
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: column;
-  width: 500px;
+  width: 400px;
   padding: 5px;
+  height: 75vh;
+  padding: 20px;
 `;
 
 export const SurveysPage = styled.div`
@@ -14,6 +16,18 @@ export const SurveysPage = styled.div`
   align-items: center;
   justify-content: center;
   background-color: #0f4c81;
+`;
+
+export const ContainerPaddings = styled.div`
+  padding: 15px;
+  ${(props) => {
+    return (
+      props.border === "left" &&
+      css`
+        border-left: 1px solid white;
+      `
+    );
+  }}
 `;
 
 export const SurveyContainer = styled.div`
@@ -32,8 +46,6 @@ export const Question = styled.p`
 export const SpendingContainer = styled.div`
   ${FlexDisplay}
   border-bottom: 1px solid white;
-  width: 400px;
-  padding: 20px;
 `;
 
 export const SpendingOption = styled.div`
@@ -86,25 +98,7 @@ export const ButtonContainer = styled.div`
 
 export const LifecycleContainer = styled.div`
   ${FlexDisplay}
-  border-left: 1px solid white;
   border-bottom: 1px solid white;
-  margin-left: 10px;
-  justify-content: space-between;
-  width: 400px;
-  padding: 20px;
-`;
-
-export const NumberSelector = styled.input`
-  background: white;
-  padding: 10px;
-  border: none;
-  width: 35px;
-  font-family: "Montserrat", sans-serif;
-  outline: none;
-  cursor: pointer;
-  ::-webkit-inner-spin-button{
-    -webkit-appearance: none; 
-    margin: 0; 
 `;
 
 export const YearTracker = styled.button`
@@ -135,4 +129,34 @@ export const CounterNum = styled.div`
   font-size: 25px;
   width: 25px;
   color: #0f4c81;
+`;
+
+//landfill component
+export const LandfillContainer = styled.div`
+  ${FlexDisplay}
+  border-bottom: 1px solid white;
+`;
+
+export const PercentageInput = styled.input`
+  width: 50px;
+  height: 40px;
+  font-size: 25px;
+  outline: none;
+  color: #0f4c81;
+  box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
+  border: 1px solid white;
+  font-family: "Montserrat", sans-serif;
+`;
+
+export const PercentageSymbol = styled.p`
+  font-family: "Gravitas One", cursive;
+  font-size: 25px;
+  margin-left: 20px;
+  font-weight: bold;
+  color: white;
+`;
+
+export const InputContainter = styled.div`
+  display: flex;
+  align-items: center;
 `;
