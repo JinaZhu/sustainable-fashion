@@ -66,18 +66,20 @@ def spending():
 @app.route('/lifecycle', methods=['POST'])
 def lifecycle():
     year = request.get_json()
-    exist = Lifecycle.query.filter_by(Lifecycle_year=year).scalar()
+    print('***********', year)
+    exist = Lifecycle.query.filter_by(lifecycle_year=year).scalar()
+    print("^^^^^^^^", exist)
 
     try:
         if exist == None:
             new_lifecycle_year = Lifecycle(
-                Lifecycle_year=year, votes=1)
+                lifecycle_year=year, votes=1)
             db.session.add(new_lifecycle_year)
             db.session.commit()
         else:
-            lifecycle_year = Lifecycle.query.filter_by(
-                Lifecycle_year=year).first()
-            lifecycle_year.votes += 1
+            update_lifecycle_year = Lifecycle.query.filter_by(
+                lifecycle_year=year).first()
+            update_lifecycle_year.votes += 1
             db.session.commit()
         return jsonify('yayyy')
     except:
