@@ -19,9 +19,7 @@ const spendingOptions = [
 console.log(process.env.NODE_ENV);
 export const DEBUG = process.env.NODE_ENV === "development" ? true : false;
 console.log("DEBUG", DEBUG);
-export const PREFIX = DEBUG
-  ? "http://localhost:80"
-  : "https://sustainable-fashion.herokuapp.com";
+export const PREFIX = DEBUG ? "http://localhost:80" : "";
 console.log("PREFIX", PREFIX);
 const api_path = PREFIX + "/spending";
 console.log("api_path", api_path);
