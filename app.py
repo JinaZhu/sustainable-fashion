@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
-from model import db, connect_to_db, Messages
+from model import db, connect_to_db, Messages, Spending, Lifecycle
 from flask_cors import CORS
 
 
@@ -40,6 +40,50 @@ def index():
         return jsonify(first_message.content)
     except:
         return jsonify("there was an issue adding a message")
+
+
+@app.route('/spending', methods=['POST'])
+def spending():
+    spending_amount = request.get_json()
+    exist = Spending.query.filter_by(spendingAmount=spending_amount).scalar()
+
+    try:
+        if exist == None:
+            new_spending_amount = Spending(
+                spendingAmount=spending_amount, votes=1)
+            db.session.add(new_spending_amount)
+            db.session.commit()
+        else:
+            spending = Spending.query.filter_by(
+                spendingAmount=spending_amount).first()
+            spending.votes += 1
+            db.session.commit()
+        return jsonify('yayyy')
+    except:
+        return jsonify("Something went wrong, could not add to db")
+
+
+@app.route('/lifecycle', methods=['POST'])
+def lifecycle():
+    year = request.get_json()
+    print('***********', year)
+    exist = Lifecycle.query.filter_by(lifecycle_year=year).scalar()
+    print("^^^^^^^^", exist)
+
+    try:
+        if exist == None:
+            new_lifecycle_year = Lifecycle(
+                lifecycle_year=year, votes=1)
+            db.session.add(new_lifecycle_year)
+            db.session.commit()
+        else:
+            update_lifecycle_year = Lifecycle.query.filter_by(
+                lifecycle_year=year).first()
+            update_lifecycle_year.votes += 1
+            db.session.commit()
+        return jsonify('yayyy')
+    except:
+        return jsonify("Something went wrong, could not add to db")
 
 
 @app.errorhandler(404)
