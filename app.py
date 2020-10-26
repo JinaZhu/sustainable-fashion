@@ -16,6 +16,7 @@ def home():
 @app.route('/hello', methods=['POST'])
 def index():
     message = request.get_json()
+    print('********', message)
     new_message = Messages(content=message)
 
     try:
