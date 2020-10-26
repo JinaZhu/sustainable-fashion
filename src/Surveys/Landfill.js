@@ -19,7 +19,7 @@ const Landfill = () => {
           What percentage of clothes ends up in landfills or incinerators?{" "}
         </Question>
         <InputContainter>
-          <PercentageInput type="text" maxlength="3"></PercentageInput>
+          <PercentageInput type="number" min="0" max="100"></PercentageInput>
           <PercentageSymbol>%</PercentageSymbol>
         </InputContainter>
         <ButtonContainer>
