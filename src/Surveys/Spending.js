@@ -7,7 +7,7 @@ import {
   ButtonContainer,
   ContainerPaddings,
 } from "./styled";
-import { DEBUG, PREFIX } from "../utils";
+// import { DEBUG, PREFIX } from "../utils";
 
 const spendingOptions = [
   "$0-$49",
@@ -17,7 +17,12 @@ const spendingOptions = [
   "$1000+",
 ];
 
-const api_path = PREFIX + "/#/spending";
+export const DEBUG = process.env.NODE_ENV === "development" ? true : false;
+console.log(DEBUG);
+export const PREFIX = DEBUG ? "http://localhost:80" : "";
+console.log(PREFIX);
+const api_path = PREFIX + "/spending";
+console.log(api_path);
 
 const Spending = () => {
   const [spendingAmount, setSpendingType] = useState("");
