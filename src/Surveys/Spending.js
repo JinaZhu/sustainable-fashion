@@ -16,7 +16,7 @@ const spendingOptions = [
   "$500-$999",
   "$1000+",
 ];
-
+console.log(process.env.NODE_ENV);
 export const DEBUG = process.env.NODE_ENV === "development" ? true : false;
 console.log("DEBUG", DEBUG);
 export const PREFIX = DEBUG
