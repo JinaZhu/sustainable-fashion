@@ -4,23 +4,8 @@ import os
 from model import db, connect_to_db, Messages, Spending, Lifecycle
 from flask_cors import CORS
 
-
-# from flask_sqlalchemy import flask_sqlalchemy
-
 app = Flask(__name__, static_folder='./build', static_url_path='/')
-# telling our app where the database is located
-# three slashes is a relative path, four is absolute
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-# db = SQLAlchemy(app)
 CORS(app)
-
-
-# class Survey(db.Model):
-#     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-#     content = db.Column(db.String(200), nullable=False)
-
-#     def __repr__(self):
-#         return f"<message={self.content}>"
 
 
 @app.route('/', methods=['GET'])
@@ -45,21 +30,25 @@ def index():
 @app.route('/spending', methods=['POST'])
 def spending():
     spending_amount = request.get_json()
+    print('spending_amount', spending_amount)
     exist = Spending.query.filter_by(spendingAmount=spending_amount).scalar()
-
+    print('exist', exist)
     try:
         if exist == None:
             new_spending_amount = Spending(
                 spendingAmount=spending_amount, votes=1)
+            print('new_spending_amount', new_spending_amount)
             db.session.add(new_spending_amount)
             db.session.commit()
         else:
             spending = Spending.query.filter_by(
                 spendingAmount=spending_amount).first()
+            print('spending', spending)
             spending.votes += 1
             db.session.commit()
         return jsonify('yayyy')
     except:
+        print('in except************')
         return jsonify("Something went wrong, could not add to db")
 
 

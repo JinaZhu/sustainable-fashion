@@ -34,6 +34,9 @@ class Lifecycle(db.Model):
     def __repr__(self):
         return f"<Lifecycle_year={self.lifecycle_year}>"
 
+# telling our app where the database is located
+# three slashes is a relative path, four is absolute
+
 
 def connect_to_db(app, db_uri='postgresql:///survey'):
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
