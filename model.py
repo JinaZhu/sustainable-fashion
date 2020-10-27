@@ -42,7 +42,7 @@ def connect_to_db(app, config_file='settings.py'):
     app.config.from_pyfile(config_file)
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    db.app = app
+    # db.app = app
     db.init_app(app)
 
 
