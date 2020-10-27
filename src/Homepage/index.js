@@ -42,7 +42,7 @@ const Homepage = () => {
         ></input>
         <button onClick={sendRequest}>Submit</button>
       </form>
-      <p>I got back, {backendData}</p>
+      <p>I am getting back......, {backendData}</p>
     </div>
   );
 };
