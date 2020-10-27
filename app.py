@@ -4,7 +4,7 @@ import os
 from model import db, connect_to_db, Messages, Spending, Lifecycle
 from flask_cors import CORS
 
-app = Flask(__name__, static_folder='./build', static_url_path='/')
+app = Flask(__name__)
 CORS(app)
 
 
@@ -26,7 +26,7 @@ def index():
         print('hi2')
         db.session.commit()
         print('hi3')
-        first_message = Messages.query.filter_by(id=1).first()
+        first_message = Messages.query.filter_by(content=message).first()
         print('first_message', first_message)
         return jsonify(first_message.content)
     except:
