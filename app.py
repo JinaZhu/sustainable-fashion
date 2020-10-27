@@ -18,11 +18,16 @@ def index():
     message = request.get_json()
     print('********', message)
     new_message = Messages(content=message)
+    print(new_message)
 
     try:
+        print('*******', 'hi')
         db.session.add(new_message)
+        print('hi2')
         db.session.commit()
+        print('hi3')
         first_message = Messages.query.filter_by(id=1).first()
+        print('first_message', first_message)
         return jsonify(first_message.content)
     except:
         return jsonify("there was an issue adding a message")

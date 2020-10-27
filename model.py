@@ -7,7 +7,7 @@ class Messages(db.Model):
     __tablename__ = 'messages'
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    content = db.Column(db.String(200), nullable=False)
+    content = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         return f"<message={self.content}>"
@@ -38,10 +38,8 @@ class Lifecycle(db.Model):
 # three slashes is a relative path, four is absolute
 
 
-def connect_to_db(app, db_uri='postgresql:///survey'):
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    app.config['SQLALCHEMY_ECHO'] = False
+def connect_to_db(app, config_file='settings.py'):
+    app.config.from_pyfile(config_file)
 
     db.app = app
     db.init_app(app)
