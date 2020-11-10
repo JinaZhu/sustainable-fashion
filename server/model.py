@@ -34,6 +34,17 @@ class Lifecycle(db.Model):
     def __repr__(self):
         return f"<Lifecycle_year={self.lifecycle_year}>"
 
+
+class Landfill(db.Model):
+    ___tablename__ = "landfill"
+
+    landfill_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    landfill_percentage = db.Column(db.Integer, nullable=False)
+    votes = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"<Landfill_percentage={self.landfill_percentage}>"
+
 # telling our app where the database is located
 # three slashes is a relative path, four is absolute
 
