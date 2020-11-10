@@ -3,11 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from flask_cors import CORS
 
-from model import db, Messages, Spending, Lifecycle
+from .model import db, Messages, Spending, Lifecycle
 
 
 def create_app(config_file="settings.py"):
-    app = Flask(__name__, static_folder='./build', static_url_path='/')
+    app = Flask(__name__, static_folder='../build', static_url_path='/')
     CORS(app)
 
     app.config.from_pyfile(config_file)
