@@ -39,7 +39,7 @@ class Landfill(db.Model):
     ___tablename__ = "landfill"
 
     landfill_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    landfill_percentage = db.Column(db.Interger, nullable=False)
+    landfill_percentage = db.Column(db.Integer, nullable=False)
     votes = db.Column(db.Integer, nullable=False)
 
     def __repr__(self):

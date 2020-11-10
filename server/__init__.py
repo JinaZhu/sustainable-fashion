@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
 from flask_cors import CORS
+from .commands import create_tables
 
 from .model import db, Messages, Spending, Lifecycle, Landfill
 
@@ -12,6 +13,8 @@ def create_app(config_file="settings.py"):
 
     app.config.from_pyfile(config_file)
     db.init_app(app)
+
+    app.cli.add_command(create_tables)
 
     @app.route('/', methods=['GET'])
     def home():
@@ -74,21 +77,23 @@ def create_app(config_file="settings.py"):
     @app.route('/landfill', methods=['POST'])
     def landfill():
         landfill_percentage = request.get_json()
-        if landfill_percentage > 100:
+        landfill_percentage_int = int(landfill_percentage)
+        if landfill_percentage_int > 100:
             return jsonify({'error': "Invalid input"}), 400
+        print(landfill_percentage_int)
 
         exist = Landfill.query.filter_by(
-            landfill_percentage=landfill_percentage).scalar()
+            landfill_percentage=landfill_percentage_int).scalar()
 
         try:
             if exist == None:
                 new_landfill_percentage = Landfill(
-                    landfill_percentage=landfill_percentage, votes=1)
+                    landfill_percentage=landfill_percentage_int, votes=1)
                 db.session.add(new_landfill_percentage)
-                db.sessiom.commit()
+                db.session.commit()
             else:
                 update_landfill_votes = Landfill.query.filter_by(
-                    landfill_percentage=landfill_percentage).first()
+                    landfill_percentage=landfill_percentage_int).first()
                 update_landfill_votes.votes += 1
                 db.session.commit()
             return jsonify('Yayy'), 200
