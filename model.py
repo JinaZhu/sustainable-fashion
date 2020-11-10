@@ -38,14 +38,9 @@ class Lifecycle(db.Model):
 # three slashes is a relative path, four is absolute
 
 
-def connect_to_db(app, config_file='settings.py'):
-    app.config.from_pyfile(config_file)
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# def connect_to_db(app, config_file='settings.py'):
+#     app.config.from_pyfile(config_file)
+#     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    # db.app = app
-    db.init_app(app)
-
-
-if __name__ == "__main__":
-    from app import app
-    connect_to_db(app)
+#     # db.app = app
+#     db.init_app(app)
