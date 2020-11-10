@@ -54,9 +54,10 @@ def create_app(config_file="settings.py"):
         except:
             return jsonify("Something went wrong, could not add to db")
 
-    @app.route('/lifecycle', methods=['POST', "GET"])
+    @app.route('/lifecycle', methods=['POST'])
     def lifecycle():
         year = request.get_json()
+        print(year)
         exist = Lifecycle.query.filter_by(lifecycle_year=year).scalar()
 
         try:
@@ -76,10 +77,12 @@ def create_app(config_file="settings.py"):
 
     @app.route('/landfill', methods=['POST'])
     def landfill():
+
         landfill_percentage = request.get_json()
         landfill_percentage_int = int(landfill_percentage)
         if landfill_percentage_int > 100:
             return jsonify({'error': "Invalid input"}), 400
+
         print(landfill_percentage_int)
 
         exist = Landfill.query.filter_by(

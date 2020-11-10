@@ -32,6 +32,7 @@ const Landfill = () => {
       console.log("error", error); 
     }
   }
+  console.log(answer)
 
   return (
     <ContainerPaddings border="left">
