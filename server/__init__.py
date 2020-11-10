@@ -61,7 +61,7 @@ def create_app(config_file="settings.py"):
             print('in except************')
             return jsonify("Something went wrong, could not add to db")
 
-    @app.route('/lifecycle', methods=['POST'])
+    @app.route('/lifecycle', methods=['POST', "GET"])
     def lifecycle():
         year = request.get_json()
         print('***********', year)
