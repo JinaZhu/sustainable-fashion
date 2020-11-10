@@ -5,14 +5,12 @@ const DEBUG = process.env.NODE_ENV === "development" ? true : false;
 const PREFIX = DEBUG ? "http://0.0.0.0:8000" : "";
 
 const api_call = PREFIX + "/hello";
-console.log("index api", api_call);
 
 const Homepage = () => {
   const [backendData, setBackendData] = useState("");
   const [message, setMessage] = useState("");
 
   async function sendRequest(e) {
-    console.log(message);
     e.preventDefault();
     try {
       const response = await fetch(api_call, {
