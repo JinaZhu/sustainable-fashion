@@ -11,7 +11,7 @@ import {
 } from "./styled";
 import { DEBUG, PREFIX } from "../utils";
 
-const api_path = PREFIX + "/lifecycle";
+const api_path = PREFIX + "/api/lifecycle";
 
 const Lifecycle = () => {
   const [counter, setCounter] = useState(0);

@@ -12,7 +12,7 @@ import {
 } from "./styled";
 import { DEBUG, PREFIX } from "../utils";
 
-const api_path = PREFIX + "/landfill";
+const api_path = PREFIX + "/api/landfill";
 
 const Landfill = () => {
   const [answer, setAnswer] = useState('101')

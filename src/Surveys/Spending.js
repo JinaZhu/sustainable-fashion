@@ -17,7 +17,7 @@ const spendingOptions = [
   "$1000+",
 ];
 
-const api_path = PREFIX + "/spending";
+const api_path = PREFIX + "/api/spending";
 
 const Spending = () => {
   const [spendingAmount, setSpendingType] = useState("");
