@@ -15,6 +15,7 @@ export const SurveysPage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background-color: #0f4c81;
 `;
 
@@ -31,8 +32,7 @@ export const ContainerPaddings = styled.div`
 `;
 
 export const SurveyContainer = styled.div`
-  border-top: 1px solid white;
-  margin-top: 10%;
+  // border-top: 1px solid white;
   display: flex;
 `;
 
