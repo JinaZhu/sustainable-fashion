@@ -1,10 +1,14 @@
 import React from "react";
+import Navbar from "../Navbar"
+import { HomepageContainer } from "./styled"
 
+const currentPage = 'home'
 const Homepage = () => {
   return (
-    <div className="App">
+    <HomepageContainer>
+      <Navbar currentPage={currentPage}/>
       <p>This is the homepage. </p>
-    </div>
+    </HomepageContainer>
   );
 };
 
