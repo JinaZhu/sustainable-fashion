@@ -31,16 +31,7 @@ const Homepage = () => {
   }
   return (
     <div className="App">
-      <form>
-        <input
-          onChange={(e) => {
-            setMessage(e.target.value);
-          }}
-          type="text"
-        ></input>
-        <button onClick={sendRequest}>Submit</button>
-      </form>
-      <p>I am getting back......, {backendData}</p>
+      <p>This is the homepage. </p>
     </div>
   );
 };
