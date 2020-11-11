@@ -13,6 +13,7 @@ import {
 import { DEBUG, PREFIX } from "../utils";
 
 const api_path = PREFIX + "/api/landfill";
+console.log(api_path)
 
 const Landfill = () => {
   const [answer, setAnswer] = useState('101')

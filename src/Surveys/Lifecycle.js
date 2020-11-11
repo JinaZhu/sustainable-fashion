@@ -12,6 +12,7 @@ import {
 import { DEBUG, PREFIX } from "../utils";
 
 const api_path = PREFIX + "/api/lifecycle";
+console.log(api_path)
 
 const Lifecycle = () => {
   const [counter, setCounter] = useState(0);

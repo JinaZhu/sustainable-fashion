@@ -18,6 +18,7 @@ const spendingOptions = [
 ];
 
 const api_path = PREFIX + "/api/spending";
+console.log(api_path)
 
 const Spending = () => {
   const [spendingAmount, setSpendingType] = useState("");
