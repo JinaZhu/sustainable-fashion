@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import {ColorContext} from "../ColorContext"
 import {
   LifecycleContainer,
   Question,
@@ -16,6 +18,7 @@ console.log(api_path)
 
 const Lifecycle = () => {
   const [counter, setCounter] = useState(0);
+  const {color, setColor} = useContext(ColorContext); 
 
   function renderCounter(action) {
     let currentCounter = counter + action;
@@ -45,18 +48,18 @@ const Lifecycle = () => {
   }
 
   return (
-    <ContainerPaddings border="left">
-      <LifecycleContainer>
+    <ContainerPaddings secondaryColor={color.secondaryColor} border="left">
+      <LifecycleContainer secondaryColor={color.secondaryColor}>
         <Question>
           What is the average lifecycle of a piece of clothing?
         </Question>
         <CounterContainer>
-          <YearTracker onClick={(e) => renderCounter(1)}>▲</YearTracker>
-          <CounterNum>{counter}</CounterNum>
-          <YearTracker onClick={(e) => renderCounter(-1)}>▼</YearTracker>
+          <YearTracker secondaryColor={color.secondaryColor} color={color.hex} onClick={(e) => renderCounter(1)}>▲</YearTracker>
+          <CounterNum secondaryColor={color.secondaryColor} color={color.hex} >{counter}</CounterNum>
+          <YearTracker secondaryColor={color.secondaryColor} color={color.hex} onClick={(e) => renderCounter(-1)}>▼</YearTracker>
         </CounterContainer>
         <ButtonContainer>
-          <SubmitButton
+          <SubmitButton secondaryColor={color.secondaryColor} color={color.hex} 
             onClick={(e) => {
               addLifecycleVote(e, counter);
             }}

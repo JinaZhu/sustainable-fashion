@@ -16,7 +16,8 @@ export const SurveysPage = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #0f4c81;
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color}
 `;
 
 export const ContainerPaddings = styled.div`
@@ -25,21 +26,19 @@ export const ContainerPaddings = styled.div`
     return (
       props.border === "left" &&
       css`
-        border-left: 1px solid white;
+        border-left: 1px solid ${(props) => props.secondaryColor};
       `
     );
   }}
 `;
 
 export const SurveyContainer = styled.div`
-  // border-top: 1px solid white;
   display: flex;
 `;
 
 export const Question = styled.p`
   font-family: "Gravitas One", cursive;
   font-size: 25px;
-  color: white;
   text-align: left;
 `;
 
@@ -49,16 +48,15 @@ export const SpendingContainer = styled.div`
 `;
 
 export const SpendingOption = styled.div`
-  border: 1px solid white;
+  border: 1px solid ${(props) => props.secondaryColor}; 
   width: 10rem;
   margin: 5px;
-  color: white;
   cursor: pointer;
 
   &:hover {
-    background: #f2f2f2;
-    color: #0f4c81;
-    box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
+    background: ${(props) => props.secondaryColor};
+    color: ${(props) => props.color};
+    box-shadow: 0 0 10px ${(props) => props.secondaryColor}, 0 0 40px ${(props) => props.secondaryColor}, 0 0 80px ${(props) => props.secondaryColor};
   }
   ${(props) => {
     return (
@@ -73,20 +71,20 @@ export const SpendingOption = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  background-color: f2f2f2;
-  color: #0f4c81;
+  background-color: ${(props) => props.secondaryColor};
+  color: ${(props) => props.color};
   padding: 10px;
   margin: 5px;
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
   width: 25%;
-  border: 1px solid white;
+  border: 1px solid ${(props) => props.secondaryColor};
   outline: none;
   cursor: pointer;
 
   &:hover {
     border: 1px solid white;
-    box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
+    box-shadow: 0 0 10px ${(props) => props.secondaryColor}, 0 0 40px ${(props) => props.secondaryColor}, 0 0 80px ${(props) => props.secondaryColor};
   }
 `;
 
@@ -98,21 +96,21 @@ export const ButtonContainer = styled.div`
 
 export const LifecycleContainer = styled.div`
   ${FlexDisplay}
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid ${(props) => props.secondaryColor};
 `;
 
 export const YearTracker = styled.button`
   background: transparent;
-  color: white;
-  border: 1px solid white;
+  color: ${(props) => props.secondaryColor};
+  border: 1px solid ${(props) => props.secondaryColor};
   font-size: 25px;
   padding: 3px;
   outline: none;
 
   &:hover {
-    background: #f2f2f2;
-    color: #0f4c81;
-    box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
+    background: ${(props) => props.secondaryColor};
+    color: ${(props) => props.color};
+    box-shadow: 0 0 10px ${(props) => props.secondaryColor}, 0 0 40px ${(props) => props.secondaryColor}, 0 0 80px ${(props) => props.secondaryColor};
   }
 `;
 
@@ -125,16 +123,16 @@ export const CounterContainer = styled.div`
 export const CounterNum = styled.div`
   margin: 10px;
   padding: 3px 7px;
-  background: white;
+  background: ${(props) => props.secondaryColor};
   font-size: 25px;
   width: 25px;
-  color: #0f4c81;
+  color: ${(props) => props.color};
 `;
 
 //landfill component
 export const LandfillContainer = styled.div`
   ${FlexDisplay}
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid ${(props) => props.secondaryColor};
 `;
 
 export const PercentageInput = styled.input`
@@ -142,9 +140,9 @@ export const PercentageInput = styled.input`
   height: 40px;
   font-size: 25px;
   outline: none;
-  color: #0f4c81;
-  box-shadow: 0 0 10px #f2f2f2, 0 0 40px #f2f2f2, 0 0 80px #f2f2f2;
-  border: 1px solid white;
+  color: ${(props) => props.color};
+  box-shadow: 0 0 10px ${(props) => props.secondaryColor}, 0 0 40px ${(props) => props.secondaryColor}, 0 0 80px ${(props) => props.secondaryColor};
+  border: 1px solid ${(props) => props.secondaryColor};
   font-family: "Montserrat", sans-serif;
 `;
 
@@ -153,7 +151,7 @@ export const PercentageSymbol = styled.p`
   font-size: 25px;
   margin-left: 20px;
   font-weight: bold;
-  color: white;
+  color: ${(props) => props.secondaryColor};
 `;
 
 export const InputContainter = styled.div`

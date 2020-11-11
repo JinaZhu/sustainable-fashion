@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import {ColorContext} from "../ColorContext"
 import {
   SpendingOption,
   SpendingContainer,
@@ -22,6 +24,7 @@ console.log(api_path)
 
 const Spending = () => {
   const [spendingAmount, setSpendingType] = useState("");
+  const {color, setColor} = useContext(ColorContext); 
 
   async function sendSpendingAmount(e, spendingAmount) {
     e.preventDefault();
@@ -49,7 +52,7 @@ const Spending = () => {
   }
 
   return (
-    <ContainerPaddings>
+    <ContainerPaddings secondaryColor={color.secondaryColor}>
       <SpendingContainer>
         <Question>
           On average, how much do you spend on clothes each year?
@@ -57,6 +60,8 @@ const Spending = () => {
         {spendingOptions.map((option) => {
           return (
             <SpendingOption
+              secondaryColor={color.secondaryColor}
+              color={color.hex}
               key={option}
               onClick={() => setSpendingType(option)}
               isActive={checkActive(option)}
@@ -66,7 +71,7 @@ const Spending = () => {
           );
         })}
         <ButtonContainer>
-          <SubmitButton onClick={(e) => sendSpendingAmount(e, spendingAmount)}>
+          <SubmitButton secondaryColor={color.secondaryColor} color={color.hex} onClick={(e) => sendSpendingAmount(e, spendingAmount)}>
             Submit
           </SubmitButton>
         </ButtonContainer>

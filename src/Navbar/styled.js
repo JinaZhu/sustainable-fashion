@@ -8,7 +8,7 @@ export const NavContainer = styled.div`
     height: 8vh;
     border-bottom: 1px solid white; 
     width: 100vw; 
-    color: white; 
+    color: ${(props) => props.color}; 
 `
 
 export const Logo = styled.p`
@@ -26,7 +26,7 @@ export const RouteContainer = styled.div`
 `
 
 export const StyledLink = styled(Link)`
-    color: white;
+    color: ${(props) => props.color}; 
     text-decoration: none;
     font-family: "Montserrat", sans-serif;
     z-index: 10; 
