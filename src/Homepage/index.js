@@ -1,11 +1,5 @@
 import React, { useState } from "react";
 
-const DEBUG = process.env.NODE_ENV === "development" ? true : false;
-
-const PREFIX = DEBUG ? "http://0.0.0.0:8000" : "";
-
-const api_call = PREFIX + "/api/hello";
-
 const Homepage = () => {
   const [backendData, setBackendData] = useState("");
   const [message, setMessage] = useState("");
