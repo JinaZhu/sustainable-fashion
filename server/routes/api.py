@@ -93,8 +93,3 @@ def landfill():
         return jsonify('Yayy'), 200
     except:
         return jsonify({'error': "Unable to retrieve data"}), 500
-
-
-@api.errorhandler(404)
-def not_found(e):
-    return api.send_static_file('index.html')
