@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const ColorsContainer = styled.div`
     display: flex; 
@@ -29,6 +29,15 @@ export const ColorBorder = styled.div`
     border: 1px solid ${(props) => props.color}; 
     padding: 3px; 
     margin: 10px; 
+
+    ${(props) => {
+        return (
+          props.isColor &&
+          css`
+          border: 1px solid ${(props) => props.secondaryColor}; 
+          `
+        );
+      }}
 `
 
 export const Year = styled.p`

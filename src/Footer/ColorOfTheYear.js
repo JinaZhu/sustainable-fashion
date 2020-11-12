@@ -4,6 +4,7 @@ import {ColorContext} from "../ColorContext"
 import {ColorsContainer, ColorDiv, Year, ColorBorder} from "./styled"
 
 const colors = [
+    {"hex": "#0f4c81", "colorName": "Classic Blue", "secondaryColor": "#f2f2f2", "year": "2020"}, 
     {"hex": "#FA7268", "colorName": "Living Coral", "secondaryColor": "#f2f2f2", 'year': "2019"}, 
     {"hex": "#5f4b8b", "colorName": "Ultra Violet", "secondaryColor": "#f2f2f2", 'year': "2018"}, 
     {"hex": "#88B04B", "colorName": "Greenery", "secondaryColor": "#f2f2f2", 'year': "2017"},
@@ -19,12 +20,20 @@ const colors = [
 
 const ColorOfTheYear = () => {
     const {color, setColor} = useContext(ColorContext)
+
+    function checkCurrentColor(yearColor) {
+        if (yearColor === color.hex) {
+            return true
+        } else {
+            return false
+        }
+    }
     
     return (
         <ColorsContainer>
             {colors.map((yearColor) => {
                 return (
-                    <ColorBorder color={yearColor.hex}><ColorDiv color={yearColor.hex} secondaryColor={yearColor.secondaryColor} key={yearColor.hex}>
+                    <ColorBorder key={yearColor.hex} onClick={() => setColor(yearColor)} isColor={checkCurrentColor(yearColor.hex)}  color={yearColor.hex} secondaryColor={yearColor.secondaryColor}><ColorDiv color={yearColor.hex} secondaryColor={yearColor.secondaryColor}>
                         <p>{yearColor.colorName}</p><Year>{yearColor.year}</Year>
                     </ColorDiv></ColorBorder>
                 )

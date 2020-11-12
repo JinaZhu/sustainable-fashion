@@ -7,7 +7,7 @@ import Survey from "./Surveys";
 import {ColorContext} from "./ColorContext"
 
 const color2020 = {
-  "hex": "#0f4c81;",
+  "hex": "#0f4c81",
   'colorName': "Classic Blue",
   'secondaryColor': "#f2f2f2",
   'year': '2020'
