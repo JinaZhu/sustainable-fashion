@@ -6,6 +6,7 @@ import Spending from "./Spending";
 import Lifecycle from "./Lifecycle";
 import Landfill from "./Landfill";
 import Navbar from "../Navbar"
+import Footer from "../Footer"
 
 
 const Survey = () => {
@@ -19,6 +20,7 @@ const Survey = () => {
         <Lifecycle />
         <Landfill />
       </SurveyContainer>
+      <Footer />
     </SurveysPage>
   );
 };
