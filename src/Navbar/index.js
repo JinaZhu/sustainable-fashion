@@ -22,11 +22,11 @@ const Navbar = ({currentPage}) => {
     })
 
     return (
-        <NavContainer color={color.secondaryColor}>
+        <NavContainer secondaryColor={color.secondaryColor}>
             <Logo>-tainable.</Logo>
             <RouteContainer>
-            <LinkP isActive={isHome}><StyledLink color={color.secondaryColor} to="/">Home</StyledLink></LinkP>
-            <LinkP isActive={isSurvey}><StyledLink color={color.secondaryColor} to="/survey">Survey</StyledLink></LinkP>
+            <LinkP isActive={isHome}><StyledLink color={color.hex} secondaryColor={color.secondaryColor} to="/">Home</StyledLink></LinkP>
+            <LinkP isActive={isSurvey}><StyledLink color={color.hex} secondaryColor={color.secondaryColor} to="/survey">Survey</StyledLink></LinkP>
             </RouteContainer>
         </NavContainer>
     )
