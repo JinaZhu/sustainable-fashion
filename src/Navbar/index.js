@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {NavContainer, Logo, RouteContainer, StyledLink, LinkP} from "./styled"
+import {ColorContext} from "../ColorContext"
 
 const Navbar = ({currentPage}) => {
     const [isHome, setIsHome] = useState(false)
     const [isSurvey, setIsSurvey] = useState(false)
+    const {color, setColor} = useContext(ColorContext)
 
     function checkPage() {
         if (currentPage === "home") {
@@ -19,13 +21,12 @@ const Navbar = ({currentPage}) => {
         checkPage()
     })
 
-
     return (
-        <NavContainer>
+        <NavContainer secondaryColor={color.secondaryColor}>
             <Logo>-tainable.</Logo>
             <RouteContainer>
-            <LinkP isActive={isHome}><StyledLink to="/">Home</StyledLink></LinkP>
-            <LinkP isActive={isSurvey}><StyledLink to="/survey">Survey</StyledLink></LinkP>
+            <LinkP isActive={isHome}><StyledLink color={color.hex} secondaryColor={color.secondaryColor} to="/">Home</StyledLink></LinkP>
+            <LinkP isActive={isSurvey}><StyledLink color={color.hex} secondaryColor={color.secondaryColor} to="/survey">Survey</StyledLink></LinkP>
             </RouteContainer>
         </NavContainer>
     )
